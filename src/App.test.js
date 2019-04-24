@@ -6,6 +6,7 @@ import "jest-dom/extend-expect";
 it("should not work properly", async () => {
   const wrapper = render(<App visible={false} />);
   fireEvent.click(wrapper.getByText("hide"));
-  await wait(undefined, { timeout: 2000 });
-  expect(wrapper.queryByText("hide")).not.toBeInTheDocument();
+  await wait(() => {
+    expect(wrapper.queryByText("hide")).not.toBeInTheDocument();
+  });
 });
